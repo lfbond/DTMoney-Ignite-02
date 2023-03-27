@@ -1,0 +1,100 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 14000,
+      "createdAt": "2023-03-22T19:39:41.835Z"
+    },
+    {
+      "id": 2,
+      "description": "Hamburger",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 50,
+      "createdAt": "2023-03-23T19:39:41.835Z"
+    },
+    {
+      "id": 3,
+      "description": "Aluguél do Apartamento",
+      "type": "outcome",
+      "category": "Casa",
+      "price": 1200,
+      "createdAt": "2023-03-23T19:39:41.835Z"
+    },
+    {
+      "id": 4,
+      "description": "Computador",
+      "type": "income",
+      "category": "Venda",
+      "price": 5400,
+      "createdAt": "2023-03-23T19:39:41.835Z"
+    },
+    {
+      "id": 5,
+      "description": "Desenvolvimento de Site",
+      "type": "income",
+      "category": "Venda",
+      "price": 8000,
+      "createdAt": "2023-03-23T19:39:41.835Z"
+    },
+    {
+      "id": 6,
+      "description": "Janta",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 39,
+      "createdAt": "2023-03-23T19:39:41.835Z"
+    },
+    {
+      "id": 7,
+      "description": "Aluguél do Apartamento",
+      "type": "outcome",
+      "category": "Casa",
+      "price": 1200,
+      "createdAt": "2023-03-23T19:39:41.835Z"
+    },
+    {
+      "id": 8,
+      "description": "Sálario",
+      "type": "income",
+      "category": "Salário",
+      "price": 5400,
+      "createdAt": "2023-03-23T19:39:41.835Z"
+    },
+    {
+      "id": 9,
+      "description": "Almoço",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 30,
+      "createdAt": "2023-03-23T19:39:41.835Z"
+    },
+    {
+      "id": 10,
+      "description": "Fone de Ouvido",
+      "type": "income",
+      "category": "Itens",
+      "price": 150,
+      "createdAt": "2023-03-23T19:39:41.835Z"
+    },
+    {
+      "description": "Desenvolvimento de App",
+      "price": 20000,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2023-03-27T19:59:43.613Z",
+      "id": 11
+    },
+    {
+      "description": "Almoço",
+      "price": 50,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-03-27T20:18:28.474Z",
+      "id": 12
+    }
+  ]
+}
