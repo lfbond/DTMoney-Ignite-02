@@ -1,34 +1,54 @@
+# DT Money
 
+Bem-vindo ao **DT Money**, uma aplicação web desenvolvida para ajudar no controle financeiro pessoal. Com uma interface amigável e intuitiva, o DT Money permite que você registre suas receitas e despesas, visualizando de maneira clara suas finanças.
 
-# DTMoney-Ignite-02 - Rocketseat:
+Este projeto foi criado como parte do treinamento **Ignite** da **Rocketseat**, e foca em consolidar conceitos de React.js, Styled Components e consumo de APIs.
 
-Criaremos um projeto para controle financeiro, seguindo os paramentos determinando no figma. Esse projeto é mais atualizado e aprimirado que o anterior
+## 🎯 Objetivo
 
-Esse projeto já foi desenvolvido na trilha anterior do React da Rocketseat, porém agora será feito com novas funcionalidades e novos estudo, 
-e futuramente irei dar uma funcionalidades e aplicabilidade pessoais ao projeto.
+O objetivo do **DT Money** é permitir que os usuários controlem suas finanças de maneira simples, visualizando entradas, saídas e o saldo total em uma interface clara e prática. Além disso, o projeto visa aprimorar habilidades no desenvolvimento web moderno com React.
 
-Essa aplicação utiliza Styled components, (npm create vite@latest) para a criação inicial do projeto.
+## 🚀 Funcionalidades
 
-instalação no VSCode: npm i eslint -D
+- **Registro de Transações**: Adicione suas receitas e despesas com descrição, valor e categoria.
+- **Resumo de Saldo**: Veja o resumo do saldo total, entradas e saídas de forma dinâmica.
+- **Filtragem de Transações**: Utilize o campo de busca para filtrar transações por descrição.
+- **Design Responsivo**: A interface é adaptada para dispositivos móveis e desktops.
+- **Consumo de API Simulada**: As transações são carregadas de uma API fictícia.
 
-npm i @rocketseat/eslint-config -D
+## 🛠️ Tecnologias Utilizadas
 
-Utilizamos também para baixar e utilizar icones o “phosphor-react”.
+- **React.js**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **TypeScript**: Linguagem utilizada para trazer tipagem estática ao projeto.
+- **Styled Components**: Para estilização dinâmica e componentizada.
+- **Context API**: Gerenciamento de estado global da aplicação.
+- **Axios**: Para consumo de APIs de forma eficiente.
+- **Vercel**: Hospedagem da aplicação.
 
-Utilizamos também o @radix-ui/react-dialog para o modal e o @radix-ui/react-radio-group para o check box do botão do modal.
+## 📦 Como Executar o Projeto Localmente
 
-Temos que instalar uma API para simular um backend, para podermos trabalhar com o armazenamento de dados no app. Será usada o JSON SERVER.
+1. Clone este repositório para sua máquina local:
+    ```bash
+    git clone https://github.com/lfbond/dt-money-ignite.git
+    ```
 
-Instalamos o Json-server como dependencia de Desenvolvimento
+2. Navegue até o diretório do projeto:
+    ```bash
+    cd dt-money-ignite
+    ```
 
-Depois rodamos o comando “npx json-server server.json -p 3333” //ele tenta subir na porta 3000, por isso passamos o parâmetro de “-p 3333”. Usamos o “-w” para que ele fique observando e atualizando sempre que tiver mudança no arquivo. Usamos também o “-d 500” para ver a questão do tempo de latência da aplicação, ou seja, a demora da resposta do servidor para colocarmos a questão de ‘carregando…’ na aplicação.
+3. Instale as dependências:
+    ```bash
+    npm install
+    ```
 
-Utilizar nos formulários da aplicação o hook form.
-Temos que instalar algumas bibliotecas para trabalhar com o React hook form:
-npm i react-hook-form zod;
-npm i @hookform/resolvers ;
-Foi adicionado Controllers, e usamos também o axios.
-Usamos o useCallback e o useMemo para melhorar a performace da aplicação.
+4. Execute o projeto localmente:
+    ```bash
+    npm run dev
+    ```
+5. O projeto estará disponível em: `http://localhost:3000`
+
+Ou, se preferir, você pode acessar a versão hospedada diretamente através do link: [DT Money](https://dt-money-ignite-02-6oe5ekdx1-lfbond.vercel.app/).
 
 Telas do App: 
 
@@ -46,3 +66,18 @@ Modal e lista pós inserção no modal:
 ![Tela 06 - Lista Atualizada da Saida](https://user-images.githubusercontent.com/69223872/228370640-c724c002-7e4e-43f5-8a70-bb886aca72f0.png)
 ![Tela 07 - Modal Entrada](https://user-images.githubusercontent.com/69223872/228370644-7610dc63-bcff-47ca-a676-80d715880d8d.png)
 ![Tela 08 - Lista Atualizada da Entrada](https://user-images.githubusercontent.com/69223872/228370645-47df35e7-bfe4-4907-a6e3-7a1cf474c327.png)
+
+## 🎨 Melhorias Futuras
+
+- **Integração com API real**: Implementar integração com uma API real de controle financeiro.
+- **Autenticação de Usuário**: Adicionar um sistema de autenticação para que cada usuário possa salvar suas transações.
+- **Exportação de Relatórios**: Permitir que o usuário exporte suas transações em formato PDF ou CSV.
+- **Gráficos Financeiros**: Incluir gráficos que mostrem visualmente o fluxo de caixa.
+
+## 💡 Contribuições
+
+Se você encontrou um bug, tem sugestões de melhorias ou deseja colaborar com novas funcionalidades, sinta-se à vontade para abrir uma _issue_ ou enviar um _pull request_. Contribuições são sempre bem-vindas!
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais informações.
