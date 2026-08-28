@@ -1,83 +1,483 @@
-# DT Money
+# 💰 DT Money
 
-Bem-vindo ao **DT Money**, uma aplicação web desenvolvida para ajudar no controle financeiro pessoal. Com uma interface amigável e intuitiva, o DT Money permite que você registre suas receitas e despesas, visualizando de maneira clara suas finanças.
+Aplicação web de controle financeiro desenvolvida com **React**, criada durante meus estudos na trilha **Ignite da Rocketseat** e mantida no portfólio como parte da minha evolução no desenvolvimento Front-end e Full Stack.
 
-Este projeto foi criado como parte do treinamento **Ignite** da **Rocketseat**, e foca em consolidar conceitos de React.js, Styled Components e consumo de APIs.
+O projeto permite registrar **entradas e saídas financeiras**, acompanhar as transações realizadas e visualizar um resumo do saldo de forma simples e intuitiva.
 
-## 🎯 Objetivo
+> 🔄 Este é um projeto que estou revisitando e evoluindo como parte do meu portfólio. A versão atual representa meus estudos com React e gerenciamento de estado, enquanto as próximas etapas terão foco em TypeScript, integração com backend real, banco de dados e novas funcionalidades.
 
-O objetivo do **DT Money** é permitir que os usuários controlem suas finanças de maneira simples, visualizando entradas, saídas e o saldo total em uma interface clara e prática. Além disso, o projeto visa aprimorar habilidades no desenvolvimento web moderno com React.
+---
 
-## 🚀 Funcionalidades
+## 🌐 Demonstração
 
-- **Registro de Transações**: Adicione suas receitas e despesas com descrição, valor e categoria.
-- **Resumo de Saldo**: Veja o resumo do saldo total, entradas e saídas de forma dinâmica.
-- **Filtragem de Transações**: Utilize o campo de busca para filtrar transações por descrição.
-- **Design Responsivo**: A interface é adaptada para dispositivos móveis e desktops.
-- **Consumo de API Simulada**: As transações são carregadas de uma API fictícia.
+🚀 **Aplicação online:**
 
-## 🛠️ Tecnologias Utilizadas
+https://dt-money-ignite-02-6oe5ekdx1-lfbond.vercel.app/
 
-- **React.js**: Biblioteca JavaScript para construção de interfaces de usuário.
-- **TypeScript**: Linguagem utilizada para trazer tipagem estática ao projeto.
-- **Styled Components**: Para estilização dinâmica e componentizada.
-- **Context API**: Gerenciamento de estado global da aplicação.
-- **Axios**: Para consumo de APIs de forma eficiente.
-- **Vercel**: Hospedagem da aplicação.
+---
 
-## 📦 Como Executar o Projeto Localmente
+## 📸 Preview
 
-1. Clone este repositório para sua máquina local:
-    ```bash
-    git clone https://github.com/lfbond/dt-money-ignite.git
-    ```
+> Adicionar aqui futuramente uma captura de tela ou GIF da aplicação.
 
-2. Navegue até o diretório do projeto:
-    ```bash
-    cd dt-money-ignite
-    ```
+```md
+![Preview do DT Money](./src/assets/preview.png)
+```
 
-3. Instale as dependências:
-    ```bash
-    npm install
-    ```
+---
 
-4. Execute o projeto localmente:
-    ```bash
-    npm run dev
-    ```
-5. O projeto estará disponível em: `http://localhost:3000`
+## 💻 Sobre o projeto
 
-Ou, se preferir, você pode acessar a versão hospedada diretamente através do link: [DT Money](https://dt-money-ignite-02-6oe5ekdx1-lfbond.vercel.app/).
+O **DT Money** é uma aplicação de gerenciamento financeiro que permite cadastrar e acompanhar transações.
 
-Telas do App: 
+O projeto foi desenvolvido originalmente durante meus estudos de **ReactJS na Rocketseat** e posteriormente passou a fazer parte do meu portfólio pessoal.
 
-![Tela 01](https://user-images.githubusercontent.com/69223872/228370520-ef99b15f-82c5-40cf-bf6c-549b2de644d7.png)
-![Tela 02](https://user-images.githubusercontent.com/69223872/228370523-e7076cb2-5fcb-4bf0-beb9-4f004960ce2b.png)
+Além de preservar o projeto como registro da minha evolução, decidi revisitá-lo para aplicar conhecimentos adquiridos posteriormente e transformá-lo gradualmente em uma aplicação Full Stack mais completa.
 
-Lista de busca: 
+A ideia é demonstrar não apenas minha capacidade de criar novos projetos, mas também de:
 
-![Tela 03 - Busca](https://user-images.githubusercontent.com/69223872/228370569-a28b6ee1-d24a-46cb-a5d5-baaa1a6c74b8.png)
+* analisar código desenvolvido anteriormente;
+* identificar oportunidades de melhoria;
+* refatorar aplicações existentes;
+* evoluir arquitetura e organização de código;
+* documentar decisões técnicas;
+* trabalhar incrementalmente sobre uma base existente.
 
-Modal e lista pós inserção no modal:
+---
 
-![Tela 04 - Modal](https://user-images.githubusercontent.com/69223872/228370631-44423655-dd9b-41e9-9c6f-de36a9e72309.png)
-![Tela 05 - Modal Saida](https://user-images.githubusercontent.com/69223872/228370636-e0440c9c-153a-42d8-91b3-b16015429ea2.png)
-![Tela 06 - Lista Atualizada da Saida](https://user-images.githubusercontent.com/69223872/228370640-c724c002-7e4e-43f5-8a70-bb886aca72f0.png)
-![Tela 07 - Modal Entrada](https://user-images.githubusercontent.com/69223872/228370644-7610dc63-bcff-47ca-a676-80d715880d8d.png)
-![Tela 08 - Lista Atualizada da Entrada](https://user-images.githubusercontent.com/69223872/228370645-47df35e7-bfe4-4907-a6e3-7a1cf474c327.png)
+## ✨ Funcionalidades atuais
 
-## 🎨 Melhorias Futuras
+A aplicação permite:
 
-- **Integração com API real**: Implementar integração com uma API real de controle financeiro.
-- **Autenticação de Usuário**: Adicionar um sistema de autenticação para que cada usuário possa salvar suas transações.
-- **Exportação de Relatórios**: Permitir que o usuário exporte suas transações em formato PDF ou CSV.
-- **Gráficos Financeiros**: Incluir gráficos que mostrem visualmente o fluxo de caixa.
+* 💰 cadastrar novas transações;
+* 🟢 registrar valores de entrada;
+* 🔴 registrar valores de saída;
+* 📋 visualizar o histórico de transações;
+* 📊 acompanhar o total de entradas;
+* 📉 acompanhar o total de saídas;
+* 💵 visualizar o saldo disponível;
+* 🏷️ categorizar transações;
+* 📅 visualizar informações relacionadas às movimentações financeiras;
+* 📱 utilizar a aplicação através de uma interface web.
 
-## 💡 Contribuições
+---
 
-Se você encontrou um bug, tem sugestões de melhorias ou deseja colaborar com novas funcionalidades, sinta-se à vontade para abrir uma _issue_ ou enviar um _pull request_. Contribuições são sempre bem-vindas!
+## 🛠️ Tecnologias
 
-## 📄 Licença
+A versão atual foi construída utilizando tecnologias e conceitos do ecossistema React, incluindo:
 
-Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais informações.
+* ReactJS
+* JavaScript
+* Styled Components
+* Context API
+* React Hooks
+* MirageJS
+* HTML5
+* CSS-in-JS
+* Git
+* GitHub
+* Vercel
+
+---
+
+## 🧠 Conceitos praticados
+
+Durante o desenvolvimento deste projeto foram trabalhados conceitos como:
+
+### React
+
+* componentização;
+* propriedades;
+* estado;
+* Hooks;
+* renderização;
+* reutilização de componentes.
+
+### Gerenciamento de estado
+
+Uso da **Context API** para compartilhar informações das transações entre diferentes partes da aplicação.
+
+### Comunicação entre componentes
+
+Organização da aplicação para permitir que diferentes componentes compartilhem e atualizem os dados financeiros.
+
+### Imutabilidade
+
+Atualização dos dados da aplicação respeitando os princípios de imutabilidade utilizados no ecossistema React.
+
+### Estilização
+
+Construção da interface utilizando **Styled Components**, permitindo trabalhar estilos diretamente através de componentes.
+
+### Simulação de API
+
+A versão atual utiliza **MirageJS** para simular uma API durante o desenvolvimento.
+
+Isso permitiu trabalhar conceitos de comunicação assíncrona antes da implementação de um backend real.
+
+---
+
+# 🏗️ Arquitetura atual
+
+De forma simplificada, a aplicação funciona atualmente assim:
+
+```text
+Interface React
+      ↓
+Components
+      ↓
+Context API
+      ↓
+MirageJS
+      ↓
+Dados simulados
+```
+
+Essa arquitetura foi importante durante meus estudos de React para compreender comunicação entre componentes, estado global e consumo de dados.
+
+---
+
+# 🔄 Evolução do projeto
+
+Este projeto representa uma etapa anterior da minha jornada como desenvolvedor.
+
+Em vez de simplesmente arquivá-lo, decidi revisitá-lo e utilizá-lo para aplicar conhecimentos adquiridos posteriormente.
+
+## Versão original
+
+Principais conceitos:
+
+```text
+React
+Styled Components
+Context API
+Hooks
+MirageJS
+```
+
+## Objetivo da refatoração
+
+Transformar gradualmente o projeto em uma aplicação financeira Full Stack.
+
+Arquitetura planejada:
+
+```text
+React + TypeScript
+        ↓
+     REST API
+        ↓
+ Node.js + Express
+        ↓
+      Prisma
+        ↓
+   PostgreSQL
+```
+
+---
+
+# 🚀 Roadmap — DT Money 2.0
+
+## Etapa 1 — Front-end
+
+* [ ] Migrar o projeto para TypeScript
+* [ ] Revisar a estrutura de componentes
+* [ ] Melhorar responsividade
+* [ ] Criar estados de loading
+* [ ] Criar tratamento visual de erros
+* [ ] Implementar busca de transações
+* [ ] Implementar filtros
+* [ ] Implementar ordenação
+* [ ] Melhorar acessibilidade
+* [ ] Melhorar experiência em dispositivos móveis
+
+---
+
+## Etapa 2 — Dashboard
+
+* [ ] Criar gráficos financeiros
+* [ ] Exibir evolução mensal de receitas
+* [ ] Exibir evolução mensal de despesas
+* [ ] Criar resumo por categoria
+* [ ] Criar filtros por período
+* [ ] Criar indicadores financeiros
+
+Exemplo:
+
+```text
+Entradas
+R$ 8.400
+
+Saídas
+R$ 3.200
+
+Saldo
+R$ 5.200
+```
+
+---
+
+## Etapa 3 — Backend
+
+Substituir o MirageJS por uma API REST real.
+
+Tecnologias planejadas:
+
+```text
+Node.js
+Express
+TypeScript
+Prisma
+PostgreSQL
+```
+
+Endpoints inicialmente planejados:
+
+```http
+GET /transactions
+
+GET /transactions/:id
+
+POST /transactions
+
+PUT /transactions/:id
+
+DELETE /transactions/:id
+
+GET /transactions/summary
+```
+
+---
+
+## Etapa 4 — Banco de dados
+
+Persistir as transações utilizando PostgreSQL.
+
+Estrutura inicial planejada:
+
+```text
+User
+ └── Transactions
+       ├── id
+       ├── title
+       ├── amount
+       ├── type
+       ├── category
+       └── createdAt
+```
+
+---
+
+## Etapa 5 — Autenticação
+
+* [ ] Cadastro de usuário
+* [ ] Login
+* [ ] Autenticação com JWT
+* [ ] Rotas protegidas
+* [ ] Transações associadas ao usuário
+* [ ] Logout
+
+Endpoints planejados:
+
+```http
+POST /users
+
+POST /sessions
+```
+
+---
+
+## Etapa 6 — Qualidade
+
+* [ ] Validação de formulários
+* [ ] Tratamento centralizado de erros
+* [ ] Testes unitários
+* [ ] Testes de componentes
+* [ ] Padronização de código
+* [ ] ESLint
+* [ ] Prettier
+* [ ] Documentação da API
+
+---
+
+# 📚 Objetivos de aprendizado
+
+Com a evolução deste projeto pretendo aprofundar conhecimentos em:
+
+* React
+* TypeScript
+* React Hooks
+* gerenciamento de estado
+* componentização
+* consumo de APIs
+* Node.js
+* Express
+* APIs REST
+* PostgreSQL
+* Prisma
+* autenticação
+* JWT
+* validação
+* testes
+* Git Flow
+* boas práticas de desenvolvimento.
+
+---
+
+# 📁 Estrutura
+
+A estrutura pode variar conforme a evolução do projeto, mas a organização da versão atual segue a separação entre componentes, contextos, páginas/estrutura principal, estilos e serviços necessários à aplicação.
+
+Durante a refatoração, essa estrutura também será revisada para melhorar a separação de responsabilidades.
+
+---
+
+# ⚙️ Como executar
+
+## Pré-requisitos
+
+Antes de começar, tenha instalado:
+
+* Node.js
+* npm ou Yarn
+* Git
+
+---
+
+## Clone o projeto
+
+```bash
+git clone https://github.com/lfbond/dtmoney-rocketseat-reactjs.git
+```
+
+Entre no diretório:
+
+```bash
+cd dtmoney-rocketseat-reactjs
+```
+
+---
+
+## Instale as dependências
+
+Com npm:
+
+```bash
+npm install
+```
+
+Ou Yarn:
+
+```bash
+yarn
+```
+
+---
+
+## Execute a aplicação
+
+Com npm:
+
+```bash
+npm start
+```
+
+Ou:
+
+```bash
+yarn start
+```
+
+A aplicação será iniciada em ambiente de desenvolvimento.
+
+---
+
+# 🌐 Deploy
+
+O projeto está publicado na **Vercel**.
+
+🔗 Aplicação:
+
+https://dt-money-ignite-02-6oe5ekdx1-lfbond.vercel.app/
+
+---
+
+# 📈 Por que estou refatorando este projeto?
+
+Uma parte importante da evolução como desenvolvedor não está apenas em construir novos projetos.
+
+Também está em conseguir olhar para um código desenvolvido anteriormente e identificar:
+
+> O que eu faria diferente hoje?
+
+Por isso decidi manter este projeto no portfólio e documentar sua evolução.
+
+A ideia é utilizar cada melhoria para aprofundar conhecimentos técnicos e registrar minha evolução através de:
+
+```text
+Issue
+ ↓
+Branch
+ ↓
+Implementação
+ ↓
+Commit
+ ↓
+Pull Request
+ ↓
+Documentação
+ ↓
+Deploy
+```
+
+---
+
+# 📝 Histórico de evolução
+
+### Versão inicial
+
+Projeto desenvolvido durante meus estudos de React na trilha Ignite da Rocketseat.
+
+### Refatoração 2026
+
+Projeto selecionado para uma nova etapa de estudos com foco em:
+
+* TypeScript;
+* arquitetura;
+* APIs REST;
+* Node.js;
+* banco de dados;
+* autenticação;
+* testes;
+* boas práticas.
+
+As alterações serão implementadas gradualmente e documentadas através do histórico do GitHub.
+
+---
+
+# 🎓 Origem do projeto
+
+O projeto foi desenvolvido originalmente durante meus estudos na trilha **Ignite ReactJS da Rocketseat**.
+
+A implementação e as futuras refatorações fazem parte do meu processo pessoal de aprendizado e construção de portfólio.
+
+---
+
+# 👨‍💻 Autor
+
+**Luís Felipe Bond**
+
+Desenvolvedor Front-end / Full Stack JavaScript Jr.
+
+Principais tecnologias em estudo e desenvolvimento:
+
+`JavaScript` • `TypeScript` • `React` • `Node.js`
+
+GitHub:
+
+https://github.com/lfbond
+
+---
+
+⭐ Se este projeto foi útil ou você gostou da evolução dele, considere deixar uma estrela no repositório.
+
+🚀 **Projeto em evolução contínua.**
