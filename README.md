@@ -4,7 +4,7 @@ Aplicação web de controle financeiro desenvolvida com **React**, criada durant
 
 O projeto permite registrar **entradas e saídas financeiras**, acompanhar as transações realizadas e visualizar um resumo do saldo de forma simples e intuitiva.
 
-> 🔄 Este é um projeto que estou revisitando e evoluindo como parte do meu portfólio. A versão atual representa meus estudos com React e gerenciamento de estado, enquanto as próximas etapas terão foco em TypeScript, integração com backend real, banco de dados e novas funcionalidades.
+> 🔄 Este é um projeto que estou revisitando e evoluindo como parte do meu portfólio. A versão atual utiliza React, TypeScript, gerenciamento de estado e JSON Server, enquanto as próximas etapas terão foco em uma API real, banco de dados e novas funcionalidades.
 
 ---
 
@@ -67,11 +67,11 @@ A aplicação permite:
 A versão atual foi construída utilizando tecnologias e conceitos do ecossistema React, incluindo:
 
 * ReactJS
-* JavaScript
+* TypeScript
 * Styled Components
 * Context API
 * React Hooks
-* MirageJS
+* JSON Server
 * HTML5
 * CSS-in-JS
 * Git
@@ -109,11 +109,11 @@ Atualização dos dados da aplicação respeitando os princípios de imutabilida
 
 Construção da interface utilizando **Styled Components**, permitindo trabalhar estilos diretamente através de componentes.
 
-### Simulação de API
+### Persistência dos dados
 
-A versão atual utiliza **MirageJS** para simular uma API durante o desenvolvimento.
+A versão atual utiliza o **JSON Server** para disponibilizar uma API local e persistir as transações no arquivo `server.json`.
 
-Isso permitiu trabalhar conceitos de comunicação assíncrona antes da implementação de um backend real.
+Isso permite trabalhar conceitos de comunicação assíncrona enquanto o backend real ainda não foi implementado.
 
 ---
 
@@ -128,9 +128,9 @@ Components
       ↓
 Context API
       ↓
-MirageJS
+JSON Server
       ↓
-Dados simulados
+server.json
 ```
 
 Essa arquitetura foi importante durante meus estudos de React para compreender comunicação entre componentes, estado global e consumo de dados.
@@ -149,10 +149,11 @@ Principais conceitos:
 
 ```text
 React
+TypeScript
 Styled Components
 Context API
 Hooks
-MirageJS
+JSON Server
 ```
 
 ## Objetivo da refatoração
@@ -179,7 +180,6 @@ React + TypeScript
 
 ## Etapa 1 — Front-end
 
-* [ ] Migrar o projeto para TypeScript
 * [ ] Revisar a estrutura de componentes
 * [ ] Melhorar responsividade
 * [ ] Criar estados de loading
@@ -218,7 +218,7 @@ R$ 5.200
 
 ## Etapa 3 — Backend
 
-Substituir o MirageJS por uma API REST real.
+Substituir o JSON Server por uma API REST real.
 
 Tecnologias planejadas:
 
@@ -346,13 +346,13 @@ Antes de começar, tenha instalado:
 ## Clone o projeto
 
 ```bash
-git clone https://github.com/lfbond/dtmoney-rocketseat-reactjs.git
+git clone https://github.com/lfbond/DTMoney-Ignite-02.git
 ```
 
 Entre no diretório:
 
 ```bash
-cd dtmoney-rocketseat-reactjs
+cd DTMoney-Ignite-02
 ```
 
 ---
@@ -375,19 +375,19 @@ yarn
 
 ## Execute a aplicação
 
-Com npm:
+Inicie o servidor de desenvolvimento do front-end:
 
 ```bash
-npm start
+npm run dev
 ```
 
-Ou:
+Em outro terminal, inicie o JSON Server:
 
 ```bash
-yarn start
+npm run dev:server
 ```
 
-A aplicação será iniciada em ambiente de desenvolvimento.
+A aplicação será iniciada em ambiente de desenvolvimento, com a API local disponível na porta `3333`.
 
 ---
 
