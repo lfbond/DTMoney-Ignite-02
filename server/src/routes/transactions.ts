@@ -1,5 +1,4 @@
-import { response, Router } from "express";
-import { request } from "node:http";
+import { Router } from "express";
 
 export const transactionsRouter = Router()
 
@@ -10,7 +9,7 @@ const transactions = [
         price: 2500,
         category: 'Desenvolvimento',
         type: 'income',
-        createdAd: new Date().toISOString(),
+        createdAt: new Date().toISOString(),
     },
 
     {
@@ -19,7 +18,7 @@ const transactions = [
         price: 150,
         category: 'Infraestrutura',
         type: 'outcome',
-        createdAd: new Date().toISOString(),
+        createdAt: new Date().toISOString(),
     },
 ]
 
