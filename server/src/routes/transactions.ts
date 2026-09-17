@@ -64,3 +64,52 @@ transactionsRouter.post('/', (req, res) => {
         transaction
     })
 })
+
+transactionsRouter.patch('/:id', (req, res) => {
+    const { id } = req.params
+    const { description, price, category, type} = req.body
+
+    const transactionIndex = transactions.findIndex(
+        (transaction) => transaction.id === Number(id),
+    )
+
+    if (transactionIndex === -1) {
+        return res.status(404).json({
+            message: "Transação não existe",
+        })
+    }
+
+    const currentTransaction = transactions[transactionIndex]
+
+    const updatedTransaction = {
+        ...currentTransaction,
+        description: description ?? currentTransaction.description,
+        price: price ?? currentTransaction.price,
+        category: category ?? currentTransaction.category,
+        type: type ?? currentTransaction.type,
+    }
+
+    transactions[transactionIndex] = updatedTransaction
+
+    return res.status(200).json({
+        transaction: updatedTransaction,
+    })
+})
+
+transactionsRouter.delete('/:id', (req, res) => {
+    const { id } = req.params
+
+    const transactionIndex = transactions.findIndex(
+        (transaction) => transaction.id === Number(id),
+    )
+
+    if (transactionIndex === -1) {
+        return res.status(404).json({
+            message: 'Transação não existe',
+        })
+    }
+
+    transactions.splice(transactionIndex, 1)
+
+    return res.status(204).send()
+})
