@@ -10,8 +10,8 @@ app.use(express.json())
 
 const PORT = Number(process.env.PORT) || 3333
 
-app.get('/health', (request, response) => {
-  return response.status(200).json({
+app.get('/health', (req, res) => {
+  return res.status(200).json({
     status: 'ok',
   })
 })
