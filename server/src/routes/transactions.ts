@@ -1,6 +1,5 @@
 //IMPORTS
 import { Router } from "express";
-import { error } from "node:console";
 import { z } from "zod";
 
 //ROUTER
