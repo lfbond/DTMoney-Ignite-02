@@ -1,6 +1,7 @@
 //IMPORTS
 import { Router } from "express";
 import { z } from "zod";
+import { prisma } from "../lib/prisma.js";
 
 //ROUTER
 export const transactionsRouter = Router()
@@ -41,44 +42,68 @@ const transactions = [
 ]
 
 //READ ALL
-transactionsRouter.get('/', (req, res) => {
-    return res.status(200).json({
-        transactions,
-    })
+transactionsRouter.get('/', async (req, res) => {
+    try {
+        const transactions = await prisma.transaction.findMany({
+            orderBy: {
+                createdAt: 'desc',
+            },
+        })
+
+        return res.status(200).json({
+            transactions,
+        })
+    } catch (error) {
+        console.error(error)
+
+        return res.status(500).json({
+            message: 'Erro interno do servidor'
+        })
+    }
 })
 
 //READ ONE
-transactionsRouter.get('/:id', (req, res) => {
+transactionsRouter.get('/:id', async (req, res) => {
     const paramsResult = transactionParamsSchema.safeParse(req.params)
 
     if (!paramsResult.success) {
         return res.status(400).json({
-        message: 'ID da transação inválido',
+            message: 'ID da transação invalido',
         })
     }
 
     const { id } = paramsResult.data
 
-    const transaction = transactions.find(
-        (transaction) => transaction.id === id,
-    )
+    try {
+        const transaction = await prisma.transaction.findUnique({
+            where: {
+                id,
+            },
+        })
 
-    if (!transaction) {
-        return res.status(404).json({
-        message: 'Transação não existe',
+        if (!transaction) {
+            return res.status(404).json({
+                message: 'Transação não existe',
+            })
+        }
+
+        return res.status(200).json({
+            transaction,
+        })
+    } catch (error) {
+        console.error(error)
+
+        return res.status(500).json({
+            message: 'Erro interno do Servidor',
         })
     }
-
-    return res.status(200).json({
-        transaction,
-    })
 })
 
 //CREATE
-transactionsRouter.post('/', (req, res) => {
+transactionsRouter.post('/', async (req, res) => {
     const result = createTransactionSchema.safeParse(req.body)
 
-    if (!result.success) {
+    if(!result.success) {
         return res.status(400).json({
             message: 'Dados de transação inválidos',
             errors: result.error.flatten().fieldErrors,
@@ -87,20 +112,27 @@ transactionsRouter.post('/', (req, res) => {
 
     const { description, price, category, type } = result.data
 
-    const transaction = {
-        id: transactions.length + 1,
-        description,
-        price,
-        category,
-        type,
-        createdAt: new Date().toISOString(),
+    try {
+        const transaction = await prisma.transaction.create({
+            data: {
+                description,
+                price,
+                category,
+                type,
+            },
+        })
+
+        return res.status(201).json({
+            transaction,
+        })
+    }catch (error) {
+        console.error(error)
+
+        return res.status(500).json({
+            message: 'Erro interno do Servidor',
+        })
     }
 
-    transactions.push(transaction)
-
-    return res.status(201).json({
-        transaction,
-    })
 })
 
 //UPDATE

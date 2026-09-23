@@ -5,9 +5,23 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model Transaction {
+  id          Int             @id @default(autoincrement())
+  description String
+  price       Decimal
+  category    String
+  type        TransactionType
+  createdAt   DateTime        @default(now())
+}
+
+enum TransactionType {
+  income
+  outcome
 }
