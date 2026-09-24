@@ -20,27 +20,6 @@ const transactionParamsSchema = z.object({
   id: z.coerce.number().int().positive(),
 })
 
-//DADOS TEMPORÁRIOS
-const transactions = [
-    {
-        id: 1,
-        description: 'Desenvolvimento de website',
-        price: 2500,
-        category: 'Desenvolvimento',
-        type: 'income',
-        createdAt: new Date().toISOString(),
-    },
-
-    {
-        id: 2,
-        description: 'Hospedagem',
-        price: 150,
-        category: 'Infraestrutura',
-        type: 'outcome',
-        createdAt: new Date().toISOString(),
-    },
-]
-
 //READ ALL
 transactionsRouter.get('/', async (req, res) => {
     try {
@@ -136,12 +115,12 @@ transactionsRouter.post('/', async (req, res) => {
 })
 
 //UPDATE
-transactionsRouter.patch('/:id', (req, res) => {
+transactionsRouter.patch('/:id', async (req, res) => {
     const paramsResult = transactionParamsSchema.safeParse(req.params)
 
-    if(!paramsResult.success) {
+    if (!paramsResult.success) {
         return res.status(400).json({
-            message: 'ID da transação inválido',
+            menssage: 'ID da transação inválida',
         })
     }
 
@@ -156,58 +135,75 @@ transactionsRouter.patch('/:id', (req, res) => {
         })
     }
 
-    const { description, price, category, type } = result.data
+    try {
+        const existingTransaction = await prisma.transaction.findUnique({
+            where: {
+                id,
+            },
+        })
 
-    const transactionIndex = transactions.findIndex(
-        (transaction) => transaction.id === id,
-    )
+        if (!existingTransaction) {
+            return res.status(404).json({
+                menssage: 'Transação não existe',
+            })
+        }
 
-    if (transactionIndex === -1) {
-        return res.status(404).json({
-            message: 'Transação não existe',
+        const transaction = await prisma.transaction.update({
+            where: {
+                id,
+            },
+            data: result.data,
+        })
+
+        return res.status(200).json({
+            transaction,
+        })
+    } catch (error) {
+        console.error(error)
+
+        return res.status(500).json({
+            message: 'Erro interno do servidor'
         })
     }
-
-    const currentTransaction =transactions[transactionIndex]
-
-    const updatedTransaction = {
-        ...currentTransaction,
-        description: description ?? currentTransaction.description,
-        price: price ?? currentTransaction.price,
-        category: category ?? currentTransaction.category,
-        type: type ?? currentTransaction.type,
-    }
-
-    transactions[transactionIndex] = updatedTransaction
-
-    return res.status(200).json({
-        transaction: updatedTransaction,
-    })
 })
 
 //DELETE
-transactionsRouter.delete('/:id', (req, res) => {
+transactionsRouter.delete('/:id', async (req, res) => {
     const paramsResult = transactionParamsSchema.safeParse(req.params)
-
-    if(!paramsResult.success) {
+    
+    if (!paramsResult.success) {
         return res.status(400).json({
-            message: 'ID da transação inválido'
+            message: 'ID da transação inválido',
         })
     }
 
     const { id } = paramsResult.data
 
-    const transactionIndex = transactions.findIndex(
-        (transaction) => transaction.id === id,
-    )
+    try {
+        const existingTransaction = await prisma.transaction.findUnique({
+            where: {
+                id,
+            },
+        })
 
-    if (transactionIndex === -1) {
-        return res.status(404).json({
-            message: 'Transação não existe',
+        if (!existingTransaction) {
+            return res.status(404).json({
+                message: 'Transação não existe',
+            })
+        }
+
+        await prisma.transaction.delete({
+            where: {
+                id,
+            },
+        })
+
+        return res.status(204).send()
+    } catch (error) {
+        console.error(error)
+
+        return res.status(500).json({
+            message: 'Erro interno do servidor'
         })
     }
-
-    transactions.splice(transactionIndex, 1)
-
-    return res.status(204).send()
 })
