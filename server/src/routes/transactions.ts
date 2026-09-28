@@ -14,6 +14,19 @@ const createTransactionSchema = z.object({
     type: z.enum(['income', 'outcome']),
 })
 
+function serializeTransaction<T extends {price: unknown}>(
+    transaction: T,
+) {
+    return {
+        ...transaction,
+        price: Number(transaction.price),
+    }
+}
+
+const searchTransactionsSchema = z.object({
+    q: z.string().optional(),
+})
+
 const updateTransactionSchema = createTransactionSchema.partial()
 
 const transactionParamsSchema = z.object({
@@ -22,23 +35,57 @@ const transactionParamsSchema = z.object({
 
 //READ ALL
 transactionsRouter.get('/', async (req, res) => {
-    try {
-        const transactions = await prisma.transaction.findMany({
-            orderBy: {
-                createdAt: 'desc',
-            },
-        })
+  const queryResult = searchTransactionsSchema.safeParse(req.query)
 
-        return res.status(200).json({
-            transactions,
-        })
-    } catch (error) {
-        console.error(error)
+  if (!queryResult.success) {
+    return res.status(400).json({
+      message: 'Parâmetros de busca inválidos',
+    })
+  }
 
-        return res.status(500).json({
-            message: 'Erro interno do servidor'
-        })
-    }
+  const { q } = queryResult.data
+
+  try {
+    const transactions = await prisma.transaction.findMany({
+      where: q
+        ? {
+            OR: [
+              {
+                description: {
+                  contains: q,
+                  mode: 'insensitive',
+                },
+              },
+              {
+                category: {
+                  contains: q,
+                  mode: 'insensitive',
+                },
+              },
+            ],
+          }
+        : undefined,
+
+      orderBy: {
+        createdAt: 'desc',
+      },
+    })
+
+    const serializedTransactions = transactions.map((transaction) => ({
+      ...transaction,
+      price: Number(transaction.price),
+    }))
+
+    return res.status(200).json({
+      transactions: serializedTransactions,
+    })
+  } catch (error) {
+    console.error(error)
+
+    return res.status(500).json({
+      message: 'Erro interno do servidor',
+    })
+  }
 })
 
 //READ ONE
@@ -67,7 +114,7 @@ transactionsRouter.get('/:id', async (req, res) => {
         }
 
         return res.status(200).json({
-            transaction,
+            transaction: serializeTransaction(transaction),
         })
     } catch (error) {
         console.error(error)
@@ -102,7 +149,7 @@ transactionsRouter.post('/', async (req, res) => {
         })
 
         return res.status(201).json({
-            transaction,
+            transaction: serializeTransaction(transaction),
         })
     }catch (error) {
         console.error(error)
@@ -156,7 +203,7 @@ transactionsRouter.patch('/:id', async (req, res) => {
         })
 
         return res.status(200).json({
-            transaction,
+            transaction: serializeTransaction(transaction),
         })
     } catch (error) {
         console.error(error)
