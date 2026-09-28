@@ -25,3 +25,12 @@ dist-ssr
 
 .env
 server/.env
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+server/.env
+server/.env.*
+!server/.env.example
