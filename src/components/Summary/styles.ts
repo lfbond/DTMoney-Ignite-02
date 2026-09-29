@@ -11,6 +11,22 @@ export const SummaryContainer = styled.section`
   gap: 2rem;
 
   margin-top: -5rem;
+
+  @media (max-width: 768px) {
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  gap: 1rem;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme['gray-600']};
+    border-radius: 999px;
+  }
+}
 `
 interface SummaryCardProps {
   variant?: 'green'
@@ -39,4 +55,13 @@ export const SummaryCard = styled.div<SummaryCardProps>`
     css`
       background-color: ${props.theme['green-700']};
     `}
+
+    @media (max-width: 768px) {
+  padding: 1.5rem;
+
+  strong {
+    font-size: 1.5rem;
+  }
+}
 `
+

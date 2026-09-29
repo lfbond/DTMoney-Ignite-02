@@ -3,6 +3,10 @@ import styled from 'styled-components'
 export const HeaderContainer = styled.header`
   background-color: ${(props) => props.theme['gray-900']};
   padding: 2.5rem 0 7.5rem;
+
+  @media (max-width: 600px) {
+  padding: 2rem 0 6rem;
+}
 `
 
 export const HeaderContent = styled.div`
@@ -14,6 +18,14 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 600px) {
+  padding: 0 1rem;
+
+  img {
+    width: 120px;
+  }
+}
 `
 
 export const NewTransactionButton = styled.button`
@@ -30,4 +42,10 @@ export const NewTransactionButton = styled.button`
     background-color: ${(props) => props.theme['green-700']};
     transition: background-color 0.2s;
   }
+
+  @media (max-width: 480px) {
+  height: 44px;
+  padding: 0 0.875rem;
+  font-size: 0.875rem;
+}
 `

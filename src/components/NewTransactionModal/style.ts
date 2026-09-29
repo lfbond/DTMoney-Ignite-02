@@ -11,7 +11,11 @@ export const Overlay = styled(Dialog.Overlay)`
 `
 
 export const Content = styled(Dialog.Content)`
-  min-width: 32rem;
+  width: calc(100% - 2rem);
+  max-width: 32rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+
   border-radius: 10px;
   padding: 2.5rem 3rem;
   background-color: ${(props) => props.theme['gray-800']};
@@ -62,6 +66,14 @@ export const Content = styled(Dialog.Content)`
       }
     }
   }
+
+  @media (max-width: 600px) {
+    padding: 2rem 1.25rem;
+
+    form {
+      margin-top: 1.5rem;
+    }
+  }
 `
 
 export const ClosseButton = styled(Dialog.Close)`
@@ -79,6 +91,10 @@ export const TransactionType = styled(RadioGroup.Root)`
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-top: 0.5rem;
+
+  @media (max-width: 480px) {
+  grid-template-columns: 1fr;
+}
 `
 interface TransactionTypeButtonProps {
   variant: 'income' | 'outcome'
